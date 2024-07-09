@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Navbar } from "../components/Navbar";
 import { AuroraBackground } from "../components/ui/aurora-background"
 import { HoverBorderGradient } from "../components/ui/hover-border-gradient";
+import Link from "next/link";
+import { IconBrandGithub, IconBrandInstagram,IconBrandLinkedin } from '@tabler/icons-react';
 
 export default function Homepage() {
   return (
@@ -25,15 +27,59 @@ export default function Homepage() {
         </div>
         <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
           By Mohd Ajlal
-        </div>
+        </div>  
+        <div className="font-extralight text-base md:text-lg dark:text-neutral-100">
+          This is Full Stack Project
+        </div> 
+        <Link href={'/login'}>
         <HoverBorderGradient
         containerClassName="rounded-full"
         as="button"
         className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
       >
        < AceternityLogo />
-          <span>LogIn</span>
+       <span>Login</span>
           </HoverBorderGradient>
+          </Link>
+
+
+
+          <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
+
+{/* for social media */}
+          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+          <Link href={'https://www.instagram.com/mohd_ajlal/'} target="_blank">
+        <HoverBorderGradient
+        containerClassName="rounded-full"
+        as="button"
+        className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+      >
+       <IconBrandInstagram stroke={2} />
+       <span>Instagram</span>
+          </HoverBorderGradient>
+          </Link>
+          <Link href={'https://www.linkedin.com/in/mohd-ajlal-816388253/'} target="_blank">
+        <HoverBorderGradient
+        containerClassName="rounded-full"
+        as="button"
+        className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+      >
+       <IconBrandLinkedin stroke={2} />
+       <span>Linkdin</span>
+          </HoverBorderGradient>
+          </Link>
+
+          <Link href={'https://github.com/mohd-ajlal'} target="_blank">
+        <HoverBorderGradient
+        containerClassName="rounded-full"
+        as="button"
+        className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+      >
+       <IconBrandGithub stroke={2} />
+       <span>Github</span>
+          </HoverBorderGradient>
+          </Link>
+          </div>
       </motion.div>
     </AuroraBackground>
     </>

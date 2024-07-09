@@ -37,7 +37,7 @@ export default function Loginpage() {
       setLoading(true)
       const response = await axios.post("/api/users/login" , user)
       console.log("SignUp Success", response.data);
-      router.push('/rpofile')
+      router.push('/profile')
 
 
     } catch (error:any) {
