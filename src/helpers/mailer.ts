@@ -3,19 +3,21 @@ import nodemailer from 'nodemailer';
 import bcryptjs from "bcryptjs";
 
 export const sendEmail = async({email, emailType, userId}:any) =>{
-    try {
+  try {
+    // create a hased token
+    const hashedToken = await bcryptjs.hash(userId.toString(), 10)
 
-      const hashedToken = await bcryptjs.hash(userId.toString(), 10);  // use uuid because bcryptjs create symbol such as . % etc which will create an error when we try to send the url
-        if(emailType === 'VERIFY'){
-          await User.findByIdAndUpdate(userId, 
-            {verifyToken:hashedToken, verifyTokenExpiry: Date.now() + 3600000}
-          ) 
-        }
-        else if(emailType === 'RESET'){
-          await User.findByIdAndUpdate(userId, 
-            {forgotPasswordToken:hashedToken, forgotPasswordTokenExpiry: Date.now() + 3600000} 
-          ) 
-        }
+    if (emailType === "VERIFY") {
+        await User.findByIdAndUpdate(userId, {$set:
+          {verifyToken: hashedToken, 
+            verifyTokenExpiry: (Date.now() + 3600000)
+          }
+        });
+            
+    } else if (emailType === "RESET"){
+        await User.findByIdAndUpdate(userId, {$set:
+            {forgotPasswordToken: hashedToken, forgotPasswordTokenExpiry: Date.now() + 3600000}})
+    }
 
         var transport = nodemailer.createTransport({
           host: "sandbox.smtp.mailtrap.io",
