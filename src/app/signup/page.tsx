@@ -8,9 +8,6 @@ import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
 import { cn } from "@/utils/cn";
 import {
-  IconBrandGithub,
-  IconBrandGoogle,
-  IconBrandOnlyfans,
   IconLogin,
 } from "@tabler/icons-react";
 import Link from 'next/link'
